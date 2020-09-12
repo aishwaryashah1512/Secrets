@@ -33,7 +33,8 @@ app.use(passport.session());
 
 //const saltrounds=10;                           //used in bcrypt..............
 
-mongoose.connect("mongodb+srv://admin1:123456@crB@cluster0.cuw6o.mongodb.net/secretsDB")          //console.log(md5(password)); ........md5 can be logged in console which can be then tracked back.
+mongoose.connect("mongodb+srv://admin1:123456@crB@cluster0.cuw6o.mongodb.net/secretsDB",{useNewUrlParser:true,useUnifiedTopology: true });
+//console.log(md5(password)); ........md5 can be logged in console which can be then tracked back.
 mongoose.set('useCreateIndex', true);
 
 const secretSchema=new mongoose.Schema(
@@ -212,4 +213,7 @@ app.post("/submit",function (req,res)
 });
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(3000,function()
+{
+  console.log("Server started on port 3000");
+});
